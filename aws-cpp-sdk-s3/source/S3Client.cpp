@@ -1886,8 +1886,9 @@ GetObjectOutcomeCallable S3Client::GetObjectCallable(const GetObjectRequest& req
 {
   auto task = Aws::MakeShared< std::packaged_task< GetObjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetObject(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetObjectAsync(const GetObjectRequest& request, const GetObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
