@@ -3767,8 +3767,9 @@ UploadPartOutcomeCallable S3Client::UploadPartCallable(const UploadPartRequest& 
 {
   auto task = Aws::MakeShared< std::packaged_task< UploadPartOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UploadPart(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::UploadPartAsync(const UploadPartRequest& request, const UploadPartResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
