@@ -2590,8 +2590,9 @@ ListObjectsV2OutcomeCallable S3Client::ListObjectsV2Callable(const ListObjectsV2
 {
   auto task = Aws::MakeShared< std::packaged_task< ListObjectsV2Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListObjectsV2(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::ListObjectsV2Async(const ListObjectsV2Request& request, const ListObjectsV2ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
