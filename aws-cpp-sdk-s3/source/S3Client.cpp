@@ -242,8 +242,9 @@ AbortMultipartUploadOutcomeCallable S3Client::AbortMultipartUploadCallable(const
 {
   auto task = Aws::MakeShared< std::packaged_task< AbortMultipartUploadOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->AbortMultipartUpload(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::AbortMultipartUploadAsync(const AbortMultipartUploadRequest& request, const AbortMultipartUploadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -290,8 +291,9 @@ CompleteMultipartUploadOutcomeCallable S3Client::CompleteMultipartUploadCallable
 {
   auto task = Aws::MakeShared< std::packaged_task< CompleteMultipartUploadOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CompleteMultipartUpload(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::CompleteMultipartUploadAsync(const CompleteMultipartUploadRequest& request, const CompleteMultipartUploadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -338,8 +340,9 @@ CopyObjectOutcomeCallable S3Client::CopyObjectCallable(const CopyObjectRequest& 
 {
   auto task = Aws::MakeShared< std::packaged_task< CopyObjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CopyObject(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::CopyObjectAsync(const CopyObjectRequest& request, const CopyObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -376,8 +379,9 @@ CreateBucketOutcomeCallable S3Client::CreateBucketCallable(const CreateBucketReq
 {
   auto task = Aws::MakeShared< std::packaged_task< CreateBucketOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateBucket(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::CreateBucketAsync(const CreateBucketRequest& request, const CreateBucketResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -421,8 +425,9 @@ CreateMultipartUploadOutcomeCallable S3Client::CreateMultipartUploadCallable(con
 {
   auto task = Aws::MakeShared< std::packaged_task< CreateMultipartUploadOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateMultipartUpload(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::CreateMultipartUploadAsync(const CreateMultipartUploadRequest& request, const CreateMultipartUploadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -457,8 +462,9 @@ DeleteBucketOutcomeCallable S3Client::DeleteBucketCallable(const DeleteBucketReq
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucket(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketAsync(const DeleteBucketRequest& request, const DeleteBucketResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -499,8 +505,9 @@ DeleteBucketAnalyticsConfigurationOutcomeCallable S3Client::DeleteBucketAnalytic
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketAnalyticsConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketAnalyticsConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketAnalyticsConfigurationAsync(const DeleteBucketAnalyticsConfigurationRequest& request, const DeleteBucketAnalyticsConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -536,8 +543,9 @@ DeleteBucketCorsOutcomeCallable S3Client::DeleteBucketCorsCallable(const DeleteB
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketCorsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketCors(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketCorsAsync(const DeleteBucketCorsRequest& request, const DeleteBucketCorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -573,8 +581,9 @@ DeleteBucketEncryptionOutcomeCallable S3Client::DeleteBucketEncryptionCallable(c
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketEncryptionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketEncryption(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketEncryptionAsync(const DeleteBucketEncryptionRequest& request, const DeleteBucketEncryptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -615,8 +624,9 @@ DeleteBucketIntelligentTieringConfigurationOutcomeCallable S3Client::DeleteBucke
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketIntelligentTieringConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketIntelligentTieringConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketIntelligentTieringConfigurationAsync(const DeleteBucketIntelligentTieringConfigurationRequest& request, const DeleteBucketIntelligentTieringConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -657,8 +667,9 @@ DeleteBucketInventoryConfigurationOutcomeCallable S3Client::DeleteBucketInventor
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketInventoryConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketInventoryConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketInventoryConfigurationAsync(const DeleteBucketInventoryConfigurationRequest& request, const DeleteBucketInventoryConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -694,8 +705,9 @@ DeleteBucketLifecycleOutcomeCallable S3Client::DeleteBucketLifecycleCallable(con
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketLifecycleOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketLifecycle(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketLifecycleAsync(const DeleteBucketLifecycleRequest& request, const DeleteBucketLifecycleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -736,8 +748,9 @@ DeleteBucketMetricsConfigurationOutcomeCallable S3Client::DeleteBucketMetricsCon
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketMetricsConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketMetricsConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketMetricsConfigurationAsync(const DeleteBucketMetricsConfigurationRequest& request, const DeleteBucketMetricsConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -773,8 +786,9 @@ DeleteBucketOwnershipControlsOutcomeCallable S3Client::DeleteBucketOwnershipCont
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketOwnershipControlsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketOwnershipControls(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketOwnershipControlsAsync(const DeleteBucketOwnershipControlsRequest& request, const DeleteBucketOwnershipControlsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -810,8 +824,9 @@ DeleteBucketPolicyOutcomeCallable S3Client::DeleteBucketPolicyCallable(const Del
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketPolicyOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketPolicy(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketPolicyAsync(const DeleteBucketPolicyRequest& request, const DeleteBucketPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -847,8 +862,9 @@ DeleteBucketReplicationOutcomeCallable S3Client::DeleteBucketReplicationCallable
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketReplicationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketReplication(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketReplicationAsync(const DeleteBucketReplicationRequest& request, const DeleteBucketReplicationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -884,8 +900,9 @@ DeleteBucketTaggingOutcomeCallable S3Client::DeleteBucketTaggingCallable(const D
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketTaggingOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketTagging(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketTaggingAsync(const DeleteBucketTaggingRequest& request, const DeleteBucketTaggingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -921,8 +938,9 @@ DeleteBucketWebsiteOutcomeCallable S3Client::DeleteBucketWebsiteCallable(const D
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteBucketWebsiteOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteBucketWebsite(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteBucketWebsiteAsync(const DeleteBucketWebsiteRequest& request, const DeleteBucketWebsiteResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -964,8 +982,9 @@ DeleteObjectOutcomeCallable S3Client::DeleteObjectCallable(const DeleteObjectReq
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteObjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteObject(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteObjectAsync(const DeleteObjectRequest& request, const DeleteObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1009,8 +1028,9 @@ DeleteObjectTaggingOutcomeCallable S3Client::DeleteObjectTaggingCallable(const D
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteObjectTaggingOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteObjectTagging(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteObjectTaggingAsync(const DeleteObjectTaggingRequest& request, const DeleteObjectTaggingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1046,8 +1066,9 @@ DeleteObjectsOutcomeCallable S3Client::DeleteObjectsCallable(const DeleteObjects
 {
   auto task = Aws::MakeShared< std::packaged_task< DeleteObjectsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteObjects(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeleteObjectsAsync(const DeleteObjectsRequest& request, const DeleteObjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1083,8 +1104,9 @@ DeletePublicAccessBlockOutcomeCallable S3Client::DeletePublicAccessBlockCallable
 {
   auto task = Aws::MakeShared< std::packaged_task< DeletePublicAccessBlockOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeletePublicAccessBlock(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::DeletePublicAccessBlockAsync(const DeletePublicAccessBlockRequest& request, const DeletePublicAccessBlockResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1120,8 +1142,9 @@ GetBucketAccelerateConfigurationOutcomeCallable S3Client::GetBucketAccelerateCon
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketAccelerateConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketAccelerateConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketAccelerateConfigurationAsync(const GetBucketAccelerateConfigurationRequest& request, const GetBucketAccelerateConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1157,8 +1180,9 @@ GetBucketAclOutcomeCallable S3Client::GetBucketAclCallable(const GetBucketAclReq
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketAclOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketAcl(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketAclAsync(const GetBucketAclRequest& request, const GetBucketAclResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1199,8 +1223,9 @@ GetBucketAnalyticsConfigurationOutcomeCallable S3Client::GetBucketAnalyticsConfi
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketAnalyticsConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketAnalyticsConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketAnalyticsConfigurationAsync(const GetBucketAnalyticsConfigurationRequest& request, const GetBucketAnalyticsConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1236,8 +1261,9 @@ GetBucketCorsOutcomeCallable S3Client::GetBucketCorsCallable(const GetBucketCors
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketCorsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketCors(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketCorsAsync(const GetBucketCorsRequest& request, const GetBucketCorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1273,8 +1299,9 @@ GetBucketEncryptionOutcomeCallable S3Client::GetBucketEncryptionCallable(const G
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketEncryptionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketEncryption(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketEncryptionAsync(const GetBucketEncryptionRequest& request, const GetBucketEncryptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1315,8 +1342,9 @@ GetBucketIntelligentTieringConfigurationOutcomeCallable S3Client::GetBucketIntel
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketIntelligentTieringConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketIntelligentTieringConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketIntelligentTieringConfigurationAsync(const GetBucketIntelligentTieringConfigurationRequest& request, const GetBucketIntelligentTieringConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1357,8 +1385,9 @@ GetBucketInventoryConfigurationOutcomeCallable S3Client::GetBucketInventoryConfi
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketInventoryConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketInventoryConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketInventoryConfigurationAsync(const GetBucketInventoryConfigurationRequest& request, const GetBucketInventoryConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1394,8 +1423,9 @@ GetBucketLifecycleConfigurationOutcomeCallable S3Client::GetBucketLifecycleConfi
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketLifecycleConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketLifecycleConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketLifecycleConfigurationAsync(const GetBucketLifecycleConfigurationRequest& request, const GetBucketLifecycleConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1431,8 +1461,9 @@ GetBucketLocationOutcomeCallable S3Client::GetBucketLocationCallable(const GetBu
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketLocationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketLocation(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketLocationAsync(const GetBucketLocationRequest& request, const GetBucketLocationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1468,8 +1499,9 @@ GetBucketLoggingOutcomeCallable S3Client::GetBucketLoggingCallable(const GetBuck
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketLoggingOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketLogging(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketLoggingAsync(const GetBucketLoggingRequest& request, const GetBucketLoggingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1510,8 +1542,9 @@ GetBucketMetricsConfigurationOutcomeCallable S3Client::GetBucketMetricsConfigura
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketMetricsConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketMetricsConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketMetricsConfigurationAsync(const GetBucketMetricsConfigurationRequest& request, const GetBucketMetricsConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1547,8 +1580,9 @@ GetBucketNotificationConfigurationOutcomeCallable S3Client::GetBucketNotificatio
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketNotificationConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketNotificationConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketNotificationConfigurationAsync(const GetBucketNotificationConfigurationRequest& request, const GetBucketNotificationConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1584,8 +1618,9 @@ GetBucketOwnershipControlsOutcomeCallable S3Client::GetBucketOwnershipControlsCa
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketOwnershipControlsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketOwnershipControls(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketOwnershipControlsAsync(const GetBucketOwnershipControlsRequest& request, const GetBucketOwnershipControlsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1621,8 +1656,9 @@ GetBucketPolicyOutcomeCallable S3Client::GetBucketPolicyCallable(const GetBucket
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketPolicyOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketPolicy(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketPolicyAsync(const GetBucketPolicyRequest& request, const GetBucketPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1658,8 +1694,9 @@ GetBucketPolicyStatusOutcomeCallable S3Client::GetBucketPolicyStatusCallable(con
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketPolicyStatusOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketPolicyStatus(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketPolicyStatusAsync(const GetBucketPolicyStatusRequest& request, const GetBucketPolicyStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1695,8 +1732,9 @@ GetBucketReplicationOutcomeCallable S3Client::GetBucketReplicationCallable(const
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketReplicationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketReplication(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketReplicationAsync(const GetBucketReplicationRequest& request, const GetBucketReplicationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1732,8 +1770,9 @@ GetBucketRequestPaymentOutcomeCallable S3Client::GetBucketRequestPaymentCallable
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketRequestPaymentOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketRequestPayment(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketRequestPaymentAsync(const GetBucketRequestPaymentRequest& request, const GetBucketRequestPaymentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1769,8 +1808,9 @@ GetBucketTaggingOutcomeCallable S3Client::GetBucketTaggingCallable(const GetBuck
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketTaggingOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketTagging(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketTaggingAsync(const GetBucketTaggingRequest& request, const GetBucketTaggingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1806,8 +1846,9 @@ GetBucketVersioningOutcomeCallable S3Client::GetBucketVersioningCallable(const G
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketVersioningOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketVersioning(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketVersioningAsync(const GetBucketVersioningRequest& request, const GetBucketVersioningResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1843,8 +1884,9 @@ GetBucketWebsiteOutcomeCallable S3Client::GetBucketWebsiteCallable(const GetBuck
 {
   auto task = Aws::MakeShared< std::packaged_task< GetBucketWebsiteOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetBucketWebsite(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetBucketWebsiteAsync(const GetBucketWebsiteRequest& request, const GetBucketWebsiteResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1932,8 +1974,9 @@ GetObjectAclOutcomeCallable S3Client::GetObjectAclCallable(const GetObjectAclReq
 {
   auto task = Aws::MakeShared< std::packaged_task< GetObjectAclOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetObjectAcl(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetObjectAclAsync(const GetObjectAclRequest& request, const GetObjectAclResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1977,8 +2020,9 @@ GetObjectLegalHoldOutcomeCallable S3Client::GetObjectLegalHoldCallable(const Get
 {
   auto task = Aws::MakeShared< std::packaged_task< GetObjectLegalHoldOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetObjectLegalHold(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetObjectLegalHoldAsync(const GetObjectLegalHoldRequest& request, const GetObjectLegalHoldResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2014,8 +2058,9 @@ GetObjectLockConfigurationOutcomeCallable S3Client::GetObjectLockConfigurationCa
 {
   auto task = Aws::MakeShared< std::packaged_task< GetObjectLockConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetObjectLockConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetObjectLockConfigurationAsync(const GetObjectLockConfigurationRequest& request, const GetObjectLockConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2059,8 +2104,9 @@ GetObjectRetentionOutcomeCallable S3Client::GetObjectRetentionCallable(const Get
 {
   auto task = Aws::MakeShared< std::packaged_task< GetObjectRetentionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetObjectRetention(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetObjectRetentionAsync(const GetObjectRetentionRequest& request, const GetObjectRetentionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2104,8 +2150,9 @@ GetObjectTaggingOutcomeCallable S3Client::GetObjectTaggingCallable(const GetObje
 {
   auto task = Aws::MakeShared< std::packaged_task< GetObjectTaggingOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetObjectTagging(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetObjectTaggingAsync(const GetObjectTaggingRequest& request, const GetObjectTaggingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2149,8 +2196,9 @@ GetObjectTorrentOutcomeCallable S3Client::GetObjectTorrentCallable(const GetObje
 {
   auto task = Aws::MakeShared< std::packaged_task< GetObjectTorrentOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetObjectTorrent(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetObjectTorrentAsync(const GetObjectTorrentRequest& request, const GetObjectTorrentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2186,8 +2234,9 @@ GetPublicAccessBlockOutcomeCallable S3Client::GetPublicAccessBlockCallable(const
 {
   auto task = Aws::MakeShared< std::packaged_task< GetPublicAccessBlockOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetPublicAccessBlock(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetPublicAccessBlockAsync(const GetPublicAccessBlockRequest& request, const GetPublicAccessBlockResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2222,8 +2271,9 @@ HeadBucketOutcomeCallable S3Client::HeadBucketCallable(const HeadBucketRequest& 
 {
   auto task = Aws::MakeShared< std::packaged_task< HeadBucketOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->HeadBucket(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::HeadBucketAsync(const HeadBucketRequest& request, const HeadBucketResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2265,8 +2315,9 @@ HeadObjectOutcomeCallable S3Client::HeadObjectCallable(const HeadObjectRequest& 
 {
   auto task = Aws::MakeShared< std::packaged_task< HeadObjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->HeadObject(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::HeadObjectAsync(const HeadObjectRequest& request, const HeadObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2302,8 +2353,9 @@ ListBucketAnalyticsConfigurationsOutcomeCallable S3Client::ListBucketAnalyticsCo
 {
   auto task = Aws::MakeShared< std::packaged_task< ListBucketAnalyticsConfigurationsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListBucketAnalyticsConfigurations(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::ListBucketAnalyticsConfigurationsAsync(const ListBucketAnalyticsConfigurationsRequest& request, const ListBucketAnalyticsConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2339,8 +2391,9 @@ ListBucketIntelligentTieringConfigurationsOutcomeCallable S3Client::ListBucketIn
 {
   auto task = Aws::MakeShared< std::packaged_task< ListBucketIntelligentTieringConfigurationsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListBucketIntelligentTieringConfigurations(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::ListBucketIntelligentTieringConfigurationsAsync(const ListBucketIntelligentTieringConfigurationsRequest& request, const ListBucketIntelligentTieringConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2376,8 +2429,9 @@ ListBucketInventoryConfigurationsOutcomeCallable S3Client::ListBucketInventoryCo
 {
   auto task = Aws::MakeShared< std::packaged_task< ListBucketInventoryConfigurationsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListBucketInventoryConfigurations(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::ListBucketInventoryConfigurationsAsync(const ListBucketInventoryConfigurationsRequest& request, const ListBucketInventoryConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2413,8 +2467,9 @@ ListBucketMetricsConfigurationsOutcomeCallable S3Client::ListBucketMetricsConfig
 {
   auto task = Aws::MakeShared< std::packaged_task< ListBucketMetricsConfigurationsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListBucketMetricsConfigurations(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::ListBucketMetricsConfigurationsAsync(const ListBucketMetricsConfigurationsRequest& request, const ListBucketMetricsConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2443,8 +2498,9 @@ ListBucketsOutcomeCallable S3Client::ListBucketsCallable() const
 {
   auto task = Aws::MakeShared< std::packaged_task< ListBucketsOutcome() > >(ALLOCATION_TAG, [this](){ return this->ListBuckets(); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::ListBucketsAsync(const ListBucketsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2480,8 +2536,9 @@ ListMultipartUploadsOutcomeCallable S3Client::ListMultipartUploadsCallable(const
 {
   auto task = Aws::MakeShared< std::packaged_task< ListMultipartUploadsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListMultipartUploads(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::ListMultipartUploadsAsync(const ListMultipartUploadsRequest& request, const ListMultipartUploadsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2517,8 +2574,9 @@ ListObjectVersionsOutcomeCallable S3Client::ListObjectVersionsCallable(const Lis
 {
   auto task = Aws::MakeShared< std::packaged_task< ListObjectVersionsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListObjectVersions(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::ListObjectVersionsAsync(const ListObjectVersionsRequest& request, const ListObjectVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2553,8 +2611,9 @@ ListObjectsOutcomeCallable S3Client::ListObjectsCallable(const ListObjectsReques
 {
   auto task = Aws::MakeShared< std::packaged_task< ListObjectsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListObjects(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::ListObjectsAsync(const ListObjectsRequest& request, const ListObjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2639,8 +2698,9 @@ ListPartsOutcomeCallable S3Client::ListPartsCallable(const ListPartsRequest& req
 {
   auto task = Aws::MakeShared< std::packaged_task< ListPartsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListParts(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::ListPartsAsync(const ListPartsRequest& request, const ListPartsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2676,8 +2736,9 @@ PutBucketAccelerateConfigurationOutcomeCallable S3Client::PutBucketAccelerateCon
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketAccelerateConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketAccelerateConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketAccelerateConfigurationAsync(const PutBucketAccelerateConfigurationRequest& request, const PutBucketAccelerateConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2713,8 +2774,9 @@ PutBucketAclOutcomeCallable S3Client::PutBucketAclCallable(const PutBucketAclReq
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketAclOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketAcl(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketAclAsync(const PutBucketAclRequest& request, const PutBucketAclResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2755,8 +2817,9 @@ PutBucketAnalyticsConfigurationOutcomeCallable S3Client::PutBucketAnalyticsConfi
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketAnalyticsConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketAnalyticsConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketAnalyticsConfigurationAsync(const PutBucketAnalyticsConfigurationRequest& request, const PutBucketAnalyticsConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2792,8 +2855,9 @@ PutBucketCorsOutcomeCallable S3Client::PutBucketCorsCallable(const PutBucketCors
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketCorsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketCors(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketCorsAsync(const PutBucketCorsRequest& request, const PutBucketCorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2829,8 +2893,9 @@ PutBucketEncryptionOutcomeCallable S3Client::PutBucketEncryptionCallable(const P
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketEncryptionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketEncryption(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketEncryptionAsync(const PutBucketEncryptionRequest& request, const PutBucketEncryptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2871,8 +2936,9 @@ PutBucketIntelligentTieringConfigurationOutcomeCallable S3Client::PutBucketIntel
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketIntelligentTieringConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketIntelligentTieringConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketIntelligentTieringConfigurationAsync(const PutBucketIntelligentTieringConfigurationRequest& request, const PutBucketIntelligentTieringConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2913,8 +2979,9 @@ PutBucketInventoryConfigurationOutcomeCallable S3Client::PutBucketInventoryConfi
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketInventoryConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketInventoryConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketInventoryConfigurationAsync(const PutBucketInventoryConfigurationRequest& request, const PutBucketInventoryConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2950,8 +3017,9 @@ PutBucketLifecycleConfigurationOutcomeCallable S3Client::PutBucketLifecycleConfi
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketLifecycleConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketLifecycleConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketLifecycleConfigurationAsync(const PutBucketLifecycleConfigurationRequest& request, const PutBucketLifecycleConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2987,8 +3055,9 @@ PutBucketLoggingOutcomeCallable S3Client::PutBucketLoggingCallable(const PutBuck
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketLoggingOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketLogging(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketLoggingAsync(const PutBucketLoggingRequest& request, const PutBucketLoggingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3029,8 +3098,9 @@ PutBucketMetricsConfigurationOutcomeCallable S3Client::PutBucketMetricsConfigura
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketMetricsConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketMetricsConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketMetricsConfigurationAsync(const PutBucketMetricsConfigurationRequest& request, const PutBucketMetricsConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3066,8 +3136,9 @@ PutBucketNotificationConfigurationOutcomeCallable S3Client::PutBucketNotificatio
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketNotificationConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketNotificationConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketNotificationConfigurationAsync(const PutBucketNotificationConfigurationRequest& request, const PutBucketNotificationConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3103,8 +3174,9 @@ PutBucketOwnershipControlsOutcomeCallable S3Client::PutBucketOwnershipControlsCa
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketOwnershipControlsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketOwnershipControls(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketOwnershipControlsAsync(const PutBucketOwnershipControlsRequest& request, const PutBucketOwnershipControlsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3140,8 +3212,9 @@ PutBucketPolicyOutcomeCallable S3Client::PutBucketPolicyCallable(const PutBucket
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketPolicyOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketPolicy(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketPolicyAsync(const PutBucketPolicyRequest& request, const PutBucketPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3177,8 +3250,9 @@ PutBucketReplicationOutcomeCallable S3Client::PutBucketReplicationCallable(const
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketReplicationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketReplication(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketReplicationAsync(const PutBucketReplicationRequest& request, const PutBucketReplicationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3214,8 +3288,9 @@ PutBucketRequestPaymentOutcomeCallable S3Client::PutBucketRequestPaymentCallable
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketRequestPaymentOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketRequestPayment(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketRequestPaymentAsync(const PutBucketRequestPaymentRequest& request, const PutBucketRequestPaymentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3251,8 +3326,9 @@ PutBucketTaggingOutcomeCallable S3Client::PutBucketTaggingCallable(const PutBuck
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketTaggingOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketTagging(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketTaggingAsync(const PutBucketTaggingRequest& request, const PutBucketTaggingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3288,8 +3364,9 @@ PutBucketVersioningOutcomeCallable S3Client::PutBucketVersioningCallable(const P
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketVersioningOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketVersioning(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketVersioningAsync(const PutBucketVersioningRequest& request, const PutBucketVersioningResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3325,8 +3402,9 @@ PutBucketWebsiteOutcomeCallable S3Client::PutBucketWebsiteCallable(const PutBuck
 {
   auto task = Aws::MakeShared< std::packaged_task< PutBucketWebsiteOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutBucketWebsite(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutBucketWebsiteAsync(const PutBucketWebsiteRequest& request, const PutBucketWebsiteResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3368,8 +3446,9 @@ PutObjectOutcomeCallable S3Client::PutObjectCallable(const PutObjectRequest& req
 {
   auto task = Aws::MakeShared< std::packaged_task< PutObjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutObject(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutObjectAsync(const PutObjectRequest& request, const PutObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3413,8 +3492,9 @@ PutObjectAclOutcomeCallable S3Client::PutObjectAclCallable(const PutObjectAclReq
 {
   auto task = Aws::MakeShared< std::packaged_task< PutObjectAclOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutObjectAcl(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutObjectAclAsync(const PutObjectAclRequest& request, const PutObjectAclResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3458,8 +3538,9 @@ PutObjectLegalHoldOutcomeCallable S3Client::PutObjectLegalHoldCallable(const Put
 {
   auto task = Aws::MakeShared< std::packaged_task< PutObjectLegalHoldOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutObjectLegalHold(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutObjectLegalHoldAsync(const PutObjectLegalHoldRequest& request, const PutObjectLegalHoldResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3495,8 +3576,9 @@ PutObjectLockConfigurationOutcomeCallable S3Client::PutObjectLockConfigurationCa
 {
   auto task = Aws::MakeShared< std::packaged_task< PutObjectLockConfigurationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutObjectLockConfiguration(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutObjectLockConfigurationAsync(const PutObjectLockConfigurationRequest& request, const PutObjectLockConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3540,8 +3622,9 @@ PutObjectRetentionOutcomeCallable S3Client::PutObjectRetentionCallable(const Put
 {
   auto task = Aws::MakeShared< std::packaged_task< PutObjectRetentionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutObjectRetention(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutObjectRetentionAsync(const PutObjectRetentionRequest& request, const PutObjectRetentionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3623,8 +3706,9 @@ PutPublicAccessBlockOutcomeCallable S3Client::PutPublicAccessBlockCallable(const
 {
   auto task = Aws::MakeShared< std::packaged_task< PutPublicAccessBlockOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutPublicAccessBlock(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutPublicAccessBlockAsync(const PutPublicAccessBlockRequest& request, const PutPublicAccessBlockResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3668,8 +3752,9 @@ RestoreObjectOutcomeCallable S3Client::RestoreObjectCallable(const RestoreObject
 {
   auto task = Aws::MakeShared< std::packaged_task< RestoreObjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->RestoreObject(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::RestoreObjectAsync(const RestoreObjectRequest& request, const RestoreObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3716,8 +3801,9 @@ SelectObjectContentOutcomeCallable S3Client::SelectObjectContentCallable(SelectO
 {
   auto task = Aws::MakeShared< std::packaged_task< SelectObjectContentOutcome() > >(ALLOCATION_TAG, [this, &request](){ return this->SelectObjectContent(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::SelectObjectContentAsync(SelectObjectContentRequest& request, const SelectObjectContentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3828,8 +3914,9 @@ UploadPartCopyOutcomeCallable S3Client::UploadPartCopyCallable(const UploadPartC
 {
   auto task = Aws::MakeShared< std::packaged_task< UploadPartCopyOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UploadPartCopy(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::UploadPartCopyAsync(const UploadPartCopyRequest& request, const UploadPartCopyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
