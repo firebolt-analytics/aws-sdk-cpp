@@ -47,7 +47,7 @@ ClientConfiguration::ClientConfiguration() :
     lowSpeedLimit(1),
     proxyScheme(Aws::Http::Scheme::HTTP),
     proxyPort(0),
-    executor(Aws::MakeShared<Aws::Utils::Threading::PooledThreadExecutor>(CLIENT_CONFIG_TAG, 500)),
+    executor(Aws::MakeShared<Aws::Utils::Threading::PooledThreadExecutor>(CLIENT_CONFIG_TAG, 2000)),
     verifySSL(true),
     writeRateLimiter(nullptr),
     readRateLimiter(nullptr),
