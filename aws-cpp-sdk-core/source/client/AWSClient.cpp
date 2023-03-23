@@ -488,6 +488,14 @@ HttpResponseOutcome AWSClient::AttemptOneRequest(const std::shared_ptr<HttpReque
         return HttpResponseOutcome(std::move(error));
     }
 
+    if (request.HasEmbeddedError(httpResponse->GetResponseBody(), httpResponse->GetHeaders()))
+    {
+        AWS_LOGSTREAM_DEBUG(AWS_CLIENT_LOG_TAG, "Request returned error. Attempting to generate appropriate error codes from response");
+        auto error = BuildAWSError(httpResponse);
+        error.SetMessage(error.GetMessage() + " Error is embedded in the response body.");
+        return HttpResponseOutcome(std::move(error));
+    }
+
     AWS_LOGSTREAM_DEBUG(AWS_CLIENT_LOG_TAG, "Request returned successful response.");
 
     return HttpResponseOutcome(std::move(httpResponse));
