@@ -2264,7 +2264,31 @@ HeadBucketOutcome S3Client::HeadBucket(const HeadBucketRequest& request) const
   Aws::Http::URI uri = computeEndpointOutcome.GetResult().endpoint;
   Aws::StringStream ss;
   uri.SetPath(uri.GetPath() + ss.str());
+  auto result = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_HEAD, Aws::Auth::SIGV4_SIGNER, computeEndpointOutcome.GetResult().signerRegion.c_str() /*signerRegionOverride*/, computeEndpointOutcome.GetResult().signerServiceName.c_str() /*signerServiceNameOverride*/);
+  std::cout << "result: " << result.GetResult().GetPayload().ConvertToString() << std::endl;
   return HeadBucketOutcome(MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_HEAD, Aws::Auth::SIGV4_SIGNER, computeEndpointOutcome.GetResult().signerRegion.c_str() /*signerRegionOverride*/, computeEndpointOutcome.GetResult().signerServiceName.c_str() /*signerServiceNameOverride*/));
+}
+
+std::string S3Client::HeadBucketStr(const HeadBucketRequest & request) const
+{
+    if (!request.BucketHasBeenSet())
+    {
+        AWS_LOGSTREAM_ERROR("HeadBucket", "Required field: Bucket, is not set");
+        return "bucket not set";
+    }
+    ComputeEndpointOutcome computeEndpointOutcome = ComputeEndpointString(request.GetBucket());
+    if (!computeEndpointOutcome.IsSuccess())
+    {
+        return "outcome is not success";
+    }
+    Aws::Http::URI uri = computeEndpointOutcome.GetResult().endpoint;
+    Aws::StringStream ss;
+    uri.SetPath(uri.GetPath() + ss.str());
+    auto result = MakeRequest(uri, request, Aws::Http::HttpMethod::HTTP_HEAD, Aws::Auth::SIGV4_SIGNER, computeEndpointOutcome.GetResult().signerRegion.c_str() /*signerRegionOverride*/, computeEndpointOutcome.GetResult().signerServiceName.c_str() /*signerServiceNameOverride*/);
+    auto getresult = result.GetResult();
+    auto payload = getresult.GetPayload();
+    [[ maybe_unused ]] auto str = payload.ConvertToString();
+    return result.GetResult().GetPayload().ConvertToString();
 }
 
 HeadBucketOutcomeCallable S3Client::HeadBucketCallable(const HeadBucketRequest& request) const

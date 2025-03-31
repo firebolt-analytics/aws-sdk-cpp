@@ -5344,6 +5344,8 @@ namespace Aws
          */
         virtual Model::HeadBucketOutcome HeadBucket(const Model::HeadBucketRequest& request) const;
 
+        std::string HeadBucketStr(const Model::HeadBucketRequest& request) const;
+
         /**
          * <p>This operation is useful to determine if a bucket exists and you have
          * permission to access it. The operation returns a <code>200 OK</code> if the
