@@ -406,6 +406,7 @@ namespace Aws
 
         void InitEC2MetadataClient()
         {
+            #if 0
             if (s_ec2metadataClient)
             {
                 return;
@@ -443,6 +444,7 @@ namespace Aws
             }
             AWS_LOGSTREAM_INFO(EC2_METADATA_CLIENT_LOG_TAG, "Using IMDS endpoint: " << ec2MetadataServiceEndpoint);
             s_ec2metadataClient = Aws::MakeShared<EC2MetadataClient>(EC2_METADATA_CLIENT_LOG_TAG, ec2MetadataServiceEndpoint.c_str());
+            #endif
         }
 
         void CleanupEC2MetadataClient()
