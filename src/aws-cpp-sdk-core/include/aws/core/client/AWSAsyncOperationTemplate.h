@@ -125,8 +125,9 @@ namespace Client
 
         std::function<void()> packagedFunction =
                 [task]() { (*task)(); };
+        auto future = task->get_future();
         pExecutor->Submit(std::move(packagedFunction));
-        return task->get_future();
+        return future;
     }
 
     /**

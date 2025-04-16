@@ -497,8 +497,9 @@ CopyObjectOutcomeCallable S3Client::CopyObjectCallable(const CopyObjectRequest& 
 {
   auto task = Aws::MakeShared< std::packaged_task< CopyObjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CopyObject(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::CopyObjectAsync(const CopyObjectRequest& request, const CopyObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -2250,8 +2251,9 @@ GetObjectOutcomeCallable S3Client::GetObjectCallable(const GetObjectRequest& req
 {
   auto task = Aws::MakeShared< std::packaged_task< GetObjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetObject(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::GetObjectAsync(const GetObjectRequest& request, const GetObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -3999,8 +4001,9 @@ PutObjectOutcomeCallable S3Client::PutObjectCallable(const PutObjectRequest& req
 {
   auto task = Aws::MakeShared< std::packaged_task< PutObjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutObject(request); } );
   auto packagedFunction = [task]() { (*task)(); };
+  auto future = task->get_future();
   m_executor->Submit(packagedFunction);
-  return task->get_future();
+  return future;
 }
 
 void S3Client::PutObjectAsync(const PutObjectRequest& request, const PutObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
