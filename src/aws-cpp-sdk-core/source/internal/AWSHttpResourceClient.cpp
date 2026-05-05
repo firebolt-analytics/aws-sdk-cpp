@@ -406,6 +406,11 @@ namespace Aws
 
         void InitEC2MetadataClient()
         {
+            // IRSA (EC2 metadata-based credentials) is opt-in via FIREBOLT_ALLOW_AWS_IRSA.
+            if (!Aws::Utils::StringUtils::ConvertToBool(Aws::Environment::GetEnv("FIREBOLT_ALLOW_AWS_IRSA").c_str()))
+            {
+                return;
+            }
             if (s_ec2metadataClient)
             {
                 return;
