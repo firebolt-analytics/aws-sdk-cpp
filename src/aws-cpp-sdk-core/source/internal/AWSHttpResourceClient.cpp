@@ -406,8 +406,11 @@ namespace Aws
 
         void InitEC2MetadataClient()
         {
-            // IRSA (EC2 metadata-based credentials) is opt-in via FIREBOLT_ALLOW_AWS_IRSA.
-            if (!Aws::Utils::StringUtils::ConvertToBool(Aws::Environment::GetEnv("FIREBOLT_ALLOW_AWS_IRSA").c_str()))
+            // The EC2 metadata client (used to fetch instance metadata and instance
+            // profile from the IMDS endpoint at 169.254.169.254) is disabled by
+            // default and must be explicitly enabled by setting
+            // FB_AWS_EC2_METADATA_CLIENT_ENABLED to a truthy value.
+            if (!Aws::Utils::StringUtils::ConvertToBool(Aws::Environment::GetEnv("FB_AWS_EC2_METADATA_CLIENT_ENABLED").c_str()))
             {
                 return;
             }
