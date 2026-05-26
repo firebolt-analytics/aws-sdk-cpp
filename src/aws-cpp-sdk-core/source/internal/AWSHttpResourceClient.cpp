@@ -406,8 +406,8 @@ namespace Aws
 
         void InitEC2MetadataClient()
         {
-            // The EC2 metadata client (used to fetch instance identity and IRSA-style
-            // credentials from the IMDS endpoint at 169.254.169.254) is disabled by
+            // The EC2 metadata client (used to fetch instance metadata and instance
+            // profile from the IMDS endpoint at 169.254.169.254) is disabled by
             // default and must be explicitly enabled by setting
             // FB_AWS_EC2_METADATA_CLIENT_ENABLED to a truthy value.
             if (!Aws::Utils::StringUtils::ConvertToBool(Aws::Environment::GetEnv("FB_AWS_EC2_METADATA_CLIENT_ENABLED").c_str()))
